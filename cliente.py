@@ -31,10 +31,8 @@ class Cliente:
     def prioridade_fila(self, prioridade_fila: int):
         self.__prioridade_fila = prioridade_fila
 
-    def pedir_musica(self, biblioteca_de_musicas: BibliotecaDeMusicas, fila: Fila):
+    def buscar_musica_biblioteca(self, biblioteca_de_musicas: BibliotecaDeMusicas, fila: Fila):
         if isinstance(biblioteca_de_musicas, BibliotecaDeMusicas) and isinstance(fila, Fila):
-            opcao_musica = int(input("Caso cliente queira buscar a música digite 1, caso queira adicionar música digite 2:"))
-            if opcao_musica == 1:
                 buscar_criterio = int(input("Gostaria de buscar música por: Gênero[1], Artista[2],Idioma[3]? ou Apenas Nome[4]?"))
                 if buscar_criterio == 1:
                     criterio = "Gênero"
@@ -48,17 +46,15 @@ class Cliente:
 
                 buscar_filtro = str(input("Nome da música (caso não queira filtrar por nome ou ver todas as musicas, deixe em branco):"))
                 
-                lista_de_musicas = biblioteca_de_musicas.buscar_musica(criterio, buscar_filtro)
+                musica = biblioteca_de_musicas.buscar_musica(criterio, buscar_filtro)
                 
-            else:
-                musica = biblioteca_de_musicas.adicionar_musica()
-
+                novo_pedido = [self, musica]
+                fila.adicionar_na_fila(novo_pedido)
             
-        
-        
-        novo_pedido = [self, musica]
-        fila.adicionar_na_fila(novo_pedido)
-    
+    def adicionar_musica_biblioteca(self,bibliotecademusicas : BibliotecaDeMusicas, musica: Musica ):
+        if isinstance(bibliotecademusicas, BibliotecaDeMusicas) and isinstance(musica, Musica):    
+            bibliotecademusicas.adicionar_musica()
+
     def remover_musica(self, musica: Musica, fila: Fila):
         if isinstance(fila, Fila):
             fila.remover_da_fila(self)

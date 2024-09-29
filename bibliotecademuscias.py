@@ -108,9 +108,7 @@ class BibliotecaDeMusicas:
         return self.__idiomas[escolha]
     
 
-    #ao criar a musica, caso alguma categoria seja nova deve ser
-    #adicionada na lista tambem
-    #musica tem titulo, genero, artista e idioma
+
     def adicionar_musica(self, musica: Musica):
         if isinstance(musica, Musica):
             self.__musicas.append(musica)
