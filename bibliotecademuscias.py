@@ -111,7 +111,14 @@ class BibliotecaDeMusicas:
 
     def adicionar_musica(self, musica: Musica):
         if isinstance(musica, Musica):
-            self.__musicas.append(musica)
+            if musica not in self.__musicas:
+                self.__musicas.append(musica)
+
+    def remover_musica(self, musica: Musica):
+        if isinstance(musica, Musica):
+            if musica in self.__musicas:
+                self.__musicas.remove(musica)
+
 
     def verificar_se_ja_foi_cantada(self, musica):
         if musica.__ja_cantada == True:
