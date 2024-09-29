@@ -1,26 +1,33 @@
 from cliente import Cliente
-
+from musica import Musica
 class Fila_Karaoke:
     def __init__(self):
-        self.__fila_karaoke = [[]]
-        self.__cliente = {}
+        self.__fila_karaoke = []
 
-    def adicionar_pedido(self, nome_cliente):
-        if nome_cliente not in self.__cliente:
-            novo_cliente = Cliente(nome_cliente)
-            self.__cliente[nome_cliente] = novo_cliente
-            self.__fila_karaoke[0].append(novo_cliente)
+
+    def adicionar_na_fila(self, cliente: Cliente, musica: Musica):
+        novo_pedido = [cliente, musica]
+        tamanho = len(self.__fila_karaoke)
+
+        if len(self.__fila_karaoke) == 0:
+            self.__fila_karaoke.append(novo_pedido)
         else:
-            cliente_existente = self.__cliente[nome_cliente]
-            cliente_existente.aumentar_prioridade()
-            
-            while len(self.__fila_karaoke) <= cliente_existente.prioridade:
-                self.__fila_karaoke.append([])
-            self.__fila_karaoke[cliente_existente.prioridade].append(cliente_existente)
+            for pedidos in self.__fila_karaoke:
+                if pedidos[0].prioridade_fila < cliente.prioridade_fila:
+                    posicao = self.__fila_karaoke.index(pedidos)
+                    self.__fila_karaoke.insert(posicao, novo_pedido)
+                    break
+    
+    def ver_posicao(self, cliente: Cliente):
+        for pedidos in self.__fila_karaoke:
+            if pedidos[0] == cliente:
+                return self.__fila_karaoke.index(pedidos)
 
-    def remover_pedido(self):
-        for nivel_prioridade in self.__fila_karaoke:
-            if nivel_prioridade:
-                proximo_Cliente = nivel_prioridade.pop(0)
-                return proximo_Cliente.nome
-        return None 
+    def remover_da_fila(self, cliente: Cliente):
+        for pedidos in self.__fila_karaoke:
+            if pedidos[0] == cliente:
+                self.__fila_karaoke.remove(pedidos)
+
+    def recomecar_prioridade(self):
+        for pedidos in self.__fila_karaoke:
+            pedidos[0].prioridade_fila = 0
