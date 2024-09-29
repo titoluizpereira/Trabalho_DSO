@@ -1,7 +1,7 @@
 from cliente import Cliente
 
 class Mesa:
-    def __init__(self, numero:int, clientes : list):
+    def __init__(self, numero:int):
         self.__numero = numero
         self.__clientes = []
 

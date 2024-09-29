@@ -1,4 +1,4 @@
-from main import Fila_Karaoke
+from filakaraoke import Fila_Karaoke 
 from musica import Musica
 from bibliotecademusicas import BibliotecaDeMusicas
 class Cliente:
@@ -59,8 +59,8 @@ class Cliente:
     def prioridade_fila(self, prioridade_fila: int):
         self.__prioridade_fila = prioridade_fila
 
-    def pedir_musica(self, biblioteca_de_musicas: BibliotecaDeMusicas, fila: Fila):
-        if isinstance(biblioteca_de_musicas, BibliotecaDeMusicas) and isinstance(fila, Fila):
+    def pedir_musica(self, biblioteca_de_musicas: BibliotecaDeMusicas, fila: Fila_Karaoke):
+        if isinstance(biblioteca_de_musicas, BibliotecaDeMusicas) and isinstance(fila, Fila_Karaoke):
                 buscar_criterio = int(input("Gostaria de buscar música por: Gênero[1], Artista[2],Idioma[3]? ou Apenas Nome[4]?"))
                 if buscar_criterio == 1:
                     criterio = "Gênero"

@@ -1,11 +1,11 @@
-from cliente import Cliente
+
 from musica import Musica
 class Fila_Karaoke:
     def __init__(self):
         self.__fila_karaoke = []
 
 
-    def adicionar_na_fila(self, cliente: Cliente, musica: Musica):
+    def adicionar_na_fila(self, cliente, musica: Musica):
         novo_pedido = [cliente, musica]
         tamanho = len(self.__fila_karaoke)
 
@@ -19,12 +19,12 @@ class Fila_Karaoke:
                     break
         cliente.prioridade_fila -= 1
 
-    def ver_posicao(self, cliente: Cliente):
+    def ver_posicao(self, cliente):
         for pedidos in self.__fila_karaoke:
             if pedidos[0] == cliente:
                 return self.__fila_karaoke.index(pedidos)
 
-    def remover_da_fila(self, cliente: Cliente):
+    def remover_da_fila(self, cliente):
         for pedidos in self.__fila_karaoke:
             if pedidos[0] == cliente:
                 self.__fila_karaoke.remove(pedidos)
