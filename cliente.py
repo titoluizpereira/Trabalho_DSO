@@ -2,19 +2,47 @@ from fila import Fila
 from musica import Musica
 from bibliotecademusicas import BibliotecaDeMusicas
 class Cliente:
-    def __init__(self, nome):
+    def __init__(self, nome, cpf, email, telefone):
         self.__nome = nome
+        self.__cpf = cpf
+        self.__email = email
+        self.__telefone = telefone
         self.__musicas_cantadas = 0
         self.__prioridade_fila = 0
+        
 
     @property
     def nome(self):
         return self.__nome
     
     @nome.setter
-    def nome(self, nome: int):
+    def nome(self, nome: str):
         self.__nome = nome
 
+    @property
+    def cpf(self):
+        return self.__cpf
+    
+    @cpf.setter
+    def nome(self, cpf: int):
+        self.__cpf = cpf
+
+    @property
+    def email(self):
+        return self.__email
+    
+    @email.setter
+    def nome(self, email: str):
+        self.__email = email
+    
+    @property
+    def telefone(self):
+        return self.__telefone
+    
+    @telefone.setter
+    def nome(self, telefone: int):
+        self.__telefone = telefone
+        
     @property
     def musicas_cantadas(self):
         return self.__musicas_cantadas
