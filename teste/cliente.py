@@ -1,4 +1,4 @@
-from fila import Fila
+from filakaraoke import Fila_Karaoke
 from musica import Musica
 from bibliotecademusicas import BibliotecaDeMusicas
 class Cliente:
@@ -77,16 +77,16 @@ class Cliente:
                 musica = biblioteca_de_musicas.buscar_musica(criterio, buscar_filtro)
                 
                 novo_pedido = [self, musica]
-                fila.adicionar_na_fila(self, novo_pedido)
+                fila.adicionar_pedido(self, novo_pedido)
             
     def adicionar_musica_biblioteca(self,bibliotecademusicas : BibliotecaDeMusicas, musica: Musica ):
         if isinstance(bibliotecademusicas, BibliotecaDeMusicas) and isinstance(musica, Musica):    
             bibliotecademusicas.adicionar_musica(musica)
 
-    def remover_musica(self, musica: Musica, fila: Fila):
-        if isinstance(fila, Fila):
+    def remover_musica(self, musica: Musica, fila: Fila_Karaoke):
+        if isinstance(fila, Fila_Karaoke):
             fila.remover_da_fila(self)
 
-    def verificar_posicao_na_fila(self, fila: Fila):
-        if isinstance(fila, Fila):
+    def verificar_posicao_na_fila(self, fila: Fila_Karaoke):
+        if isinstance(fila, Fila_Karaoke):
             fila.ver_posicao(self)
