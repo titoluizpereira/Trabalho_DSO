@@ -5,7 +5,7 @@ class Musica():
         self.__genero = genero
         self.__idioma = idioma
         self.__ja_cantada = False
-        self.__contador_musica = 0
+        self.__contador = 0
    
     @property
     def titulo(self):
@@ -19,29 +19,28 @@ class Musica():
     def artista(self):
         return self.__artista
 
-    @artista.setter
-    def artista(self, artista):
-        self.__artista = artista
-
     @property
     def genero(self):
         return self.__genero
-
-    @genero.setter
-    def genero(self, genero):
-        self.__genero = genero
 
     @property
     def idioma(self):
         return self.__idioma
 
-    @idioma.setter
-    def idioma(self, idioma):
-        self.__idioma = idioma
-
+    @property
+    def ja_cantada(self):
+        return self.__ja_cantada
+    
     @ja_cantada.setter
     def ja_cantada(self, ja_cantada):
         self.__ja_cantada = True
     
-    def contar_musica(self):
-        self.contar_musica += 1
+    @property
+    def contador(self):
+        return self.__contador
+
+    def incrementar_contador(self):
+        self.__contador += 1
+        self.__genero.incrementar_contador_genero()
+        self.__artista.incrementar_contador_artista()
+        self.__idioma.incrementar_contador_idioma()
