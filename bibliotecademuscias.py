@@ -1,4 +1,9 @@
 from musica import Musica
+from genero import Genero
+from idioma import Idioma
+from artista import Artista
+
+
 class BibliotecaDeMusicas:
     def __init__(self):
         self.__musicas = []
@@ -38,28 +43,79 @@ class BibliotecaDeMusicas:
     def genero(self, genero: Genero):
         self.__genero.append(genero)
 
+
+
+    #pegar o criterio se tiver, e então buscar tanto
+    #pelo criterio quanto pelo titulo
     def buscar_musica(self, criterio: str, filtro: str):
+        lista_de_musicas = []
         if criterio == "Gênero":
-            musicas = self.buscar_genero
+            opcao_escolhida = self.buscar_genero
+            for musica in self.__musicas:
+                if musica.genero == opcao_escolhida and filtro in musica.titulo:
+                    lista_de_musicas.append(musica)
         elif criterio == "Artista":
-            musicas = self.buscar_artista
+            opcao_escolhida = self.buscar_artista
+            for musica in self.__musicas:
+                if musica.artista == opcao_escolhida and filtro in musica.titulo:
+                    lista_de_musicas.append(musica)
+        elif criterio == "Idioma":
+            opcao_escolhida  = self.buscar_idioma
+            for musica in self.__musicas:
+                if musica.idioma == opcao_escolhida and filtro in musica.titulo:
+                    lista_de_musicas.append(musica)
         else:
-            musicas = self.buscar_idioma
+            for musica in self.__musicas:
+                if filtro in musica.titulo:
+                    lista_de_musicas.append(musica)
         
+        print(f"Total de musicas encontradas: {len(lista_de_musicas)}...")
+        cont = 0
+        for musica in lista_de_musicas:
+            print(f"{musica} {cont}")
+        escolha_musica = int(input("Selecione o id da música desejada: "))
+        return lista_de_musicas[escolha_musica]
 
         
 
-    def buscar_genero(self, genero: Genero):
+        
+
+               
+    def buscar_genero(self, genero: Genero, filtro: str):
         cont = 0
         for genero in self.__generos:
             print(f"{genero} [{cont}]")
-            cont =+ 1
+            cont += 1
         escolha = int(input("Insira o id do gênero escolhido: "))
-        return self.__generos[escolha]
+        return self.__artistas[escolha]
+
     
     def buscar_artista(self, artista):
-        pass
+        cont = 0
+        for artista in self.__artistas:
+            print(f"{artista} [{cont}]")
+            cont += 1
+        escolha = int(input("Insira o id do artistas/banda escolhido: "))
+        return self.__artistas[escolha]
 
     
     def buscar_idioma(self, idioma):
-        pass
+        cont = 0
+        for idioma in self.__idiomas:
+            print(f"{idioma} [{cont}]")
+            cont +=1
+        escolha = int(input("Insira o id do idioma escolhido: "))
+        return self.__idiomas[escolha]
+    
+
+    #ao criar a musica, caso alguma categoria seja nova deve ser
+    #adicionada na lista tambem
+    #musica tem titulo, genero, artista e idioma
+    def adicionar_musica(self, musica: Musica):
+        if isinstance(musica, Musica):
+            self.__musicas.append(musica)
+
+    def verificar_se_ja_foi_cantada(self, musica):
+        if musica.__ja_cantada == True:
+            return True
+        return False
