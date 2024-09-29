@@ -22,6 +22,8 @@ class Artista:
     def contador_artista(self):
         return self.__contador_artista
 
-    def _adicionar_musica(self, musica):
-        if musica not in self.__lista_artista:
+    def adicionar_musica(self, musica):
+        if musica not in self.__lista_artista and isinstance(musica, Musica):
             self.__lista_artista.append(musica)
+    def incrementar_contador_artista(self):
+            self.__contador_artista += 1

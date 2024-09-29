@@ -23,5 +23,8 @@ class Genero:
         return self.__contador_genero
 
     def _adicionar_musica(self, musica):
-        if musica not in self.__lista_genero:
+        if musica not in self.__lista_genero and isinstance(musica, Musica):
             self.__lista_genero.append(musica)
+    
+    def incrementar_contador_genero(self):
+            self.__contador_genero += 1

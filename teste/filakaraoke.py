@@ -17,7 +17,8 @@ class Fila_Karaoke:
                     posicao = self.__fila_karaoke.index(pedidos)
                     self.__fila_karaoke.insert(posicao, novo_pedido)
                     break
-    
+        cliente.prioridade_fila -= 1
+
     def ver_posicao(self, cliente: Cliente):
         for pedidos in self.__fila_karaoke:
             if pedidos[0] == cliente:

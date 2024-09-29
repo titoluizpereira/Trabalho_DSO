@@ -45,8 +45,6 @@ class BibliotecaDeMusicas:
 
 
 
-    #pegar o criterio se tiver, e então buscar tanto
-    #pelo criterio quanto pelo titulo
     def buscar_musica(self, criterio: str, filtro: str):
         lista_de_musicas = []
         if criterio == "Gênero":
