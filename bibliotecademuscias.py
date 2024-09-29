@@ -69,7 +69,7 @@ class BibliotecaDeMusicas:
                 if filtro in musica.titulo:
                     lista_de_musicas.append(musica)
         
-        print(f"Total de musicas encontradas: {len(lista_de_musicas)}...")
+      
         cont = 0
         for musica in lista_de_musicas:
             print(f"{musica} {cont}")

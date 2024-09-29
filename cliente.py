@@ -21,7 +21,7 @@ class Cliente:
     
     @musicas_cantadas.setter
     def musicas_cantadas(self, musicas_cantadas: int):
-        self.__musicas_cantadasas = musicas_cantadas
+        self.__musicas_cantadas = musicas_cantadas
 
     @property
     def prioridade_fila(self):
@@ -31,7 +31,7 @@ class Cliente:
     def prioridade_fila(self, prioridade_fila: int):
         self.__prioridade_fila = prioridade_fila
 
-    def buscar_musica_biblioteca(self, biblioteca_de_musicas: BibliotecaDeMusicas, fila: Fila):
+    def pedir_musica(self, biblioteca_de_musicas: BibliotecaDeMusicas, fila: Fila):
         if isinstance(biblioteca_de_musicas, BibliotecaDeMusicas) and isinstance(fila, Fila):
                 buscar_criterio = int(input("Gostaria de buscar música por: Gênero[1], Artista[2],Idioma[3]? ou Apenas Nome[4]?"))
                 if buscar_criterio == 1:
@@ -49,11 +49,11 @@ class Cliente:
                 musica = biblioteca_de_musicas.buscar_musica(criterio, buscar_filtro)
                 
                 novo_pedido = [self, musica]
-                fila.adicionar_na_fila(novo_pedido)
+                fila.adicionar_na_fila(self, novo_pedido)
             
     def adicionar_musica_biblioteca(self,bibliotecademusicas : BibliotecaDeMusicas, musica: Musica ):
         if isinstance(bibliotecademusicas, BibliotecaDeMusicas) and isinstance(musica, Musica):    
-            bibliotecademusicas.adicionar_musica()
+            bibliotecademusicas.adicionar_musica(musica)
 
     def remover_musica(self, musica: Musica, fila: Fila):
         if isinstance(fila, Fila):
