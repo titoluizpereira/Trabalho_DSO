@@ -1,3 +1,5 @@
+from musica import Musica
+
 class Artista:
     def __init__(self, nome_artista):
         self.__nome_artista = nome_artista
