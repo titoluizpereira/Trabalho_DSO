@@ -26,5 +26,5 @@ class Idioma:
         if musica not in self.__lista_idioma and isinstance(musica, Musica):
             self.__lista_idioma.append(musica)
     
-        def incrementar_contador_idioma(self):
+    def incrementar_contador_idioma(self):
             self.__contador_ideioma += 1
