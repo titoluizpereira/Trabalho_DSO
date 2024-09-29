@@ -54,7 +54,10 @@ class Cliente:
         
         
         novo_pedido = [self, musica]
-        fila.adcionar_na_fila(novo_pedido)
+        fila.adicionar_na_fila(novo_pedido)
     
-    def remover_da_fila(self, musica: Musica, fila: Fila):
-        pass
+    def remover_musica(self, musica: Musica, fila: Fila):
+        fila.remover_da_fila(self)
+
+    def verificar_posicao_na_fila(self, fila: Fila):
+        fila.ver_posicao(self)
