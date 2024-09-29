@@ -7,7 +7,6 @@ class Fila_Karaoke:
 
     def adicionar_na_fila(self, cliente, musica: Musica):
         novo_pedido = [cliente, musica]
-        tamanho = len(self.__fila_karaoke)
 
         if len(self.__fila_karaoke) == 0:
             self.__fila_karaoke.append(novo_pedido)
