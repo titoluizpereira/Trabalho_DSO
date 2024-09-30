@@ -24,7 +24,7 @@ class Cliente:
         return self.__cpf
     
     @cpf.setter
-    def nome(self, cpf: int):
+    def cpf(self, cpf: int):
         self.__cpf = cpf
 
     @property
@@ -32,7 +32,7 @@ class Cliente:
         return self.__email
     
     @email.setter
-    def nome(self, email: str):
+    def email(self, email: str):
         self.__email = email
     
     @property
@@ -40,7 +40,7 @@ class Cliente:
         return self.__telefone
     
     @telefone.setter
-    def nome(self, telefone: int):
+    def telefone(self, telefone: int):
         self.__telefone = telefone
         
     @property

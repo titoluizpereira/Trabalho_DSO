@@ -1,5 +1,5 @@
-
 from musica import Musica
+
 class Fila_Karaoke:
     def __init__(self):
         self.__fila_karaoke = []
@@ -15,10 +15,6 @@ class Fila_Karaoke:
 
     def adicionar_na_fila(self, cliente, musica: Musica):
         novo_pedido = [cliente, musica]
-<<<<<<< HEAD
-=======
-
->>>>>>> da8779e216765c3d9b89daf41517b90bc4c816d0
         if len(self.__fila_karaoke) == 0:
             self.__fila_karaoke.append(novo_pedido)
         else:
