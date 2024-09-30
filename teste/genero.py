@@ -28,3 +28,6 @@ class Genero:
     
     def incrementar_contador_genero(self):
             self.__contador_genero += 1
+
+    def __str__(self):
+        return self.__nome_genero

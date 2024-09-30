@@ -44,3 +44,7 @@ class Musica():
         self.__genero.incrementar_contador_genero()
         self.__artista.incrementar_contador_artista()
         self.__idioma.incrementar_contador_idioma()
+
+    
+    def __str__(self):
+        return self.__titulo

@@ -5,10 +5,16 @@ class Fila_Karaoke:
         self.__fila_karaoke = []
 
 
+    @property
+    def fila_karaoke(self):
+        return self.__fila_karaoke
+    
+    @fila_karaoke.setter
+    def fila_karaoke(self, fila_karaoke: list):
+        self.__fila_karaoke.append(fila_karaoke)
+
     def adicionar_na_fila(self, cliente, musica: Musica):
         novo_pedido = [cliente, musica]
-        tamanho = len(self.__fila_karaoke)
-
         if len(self.__fila_karaoke) == 0:
             self.__fila_karaoke.append(novo_pedido)
         else:

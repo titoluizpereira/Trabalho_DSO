@@ -36,29 +36,34 @@ class BibliotecaDeMusicas:
         self.__idiomas.append(idiomas)
 
     @property
-    def genero(self):
-        return self.__genero
+    def generos(self):
+        return self.__generos
     
-    @genero.setter
-    def genero(self, genero: Genero):
-        self.__genero.append(genero)
+    @generos.setter
+    def generos(self, genero: Genero):
+        self.__generos.append(genero)
 
 
 
     def buscar_musica(self, criterio: str, filtro: str):
         lista_de_musicas = []
+        cont = 0
         if criterio == "Gênero":
-            opcao_escolhida = self.buscar_genero
+            opcao_escolhida = self.buscar_genero()
             for musica in self.__musicas:
                 if musica.genero == opcao_escolhida and filtro in musica.titulo:
                     lista_de_musicas.append(musica)
+
+
         elif criterio == "Artista":
-            opcao_escolhida = self.buscar_artista
+            opcao_escolhida = self.buscar_artista()
             for musica in self.__musicas:
                 if musica.artista == opcao_escolhida and filtro in musica.titulo:
                     lista_de_musicas.append(musica)
+
+
         elif criterio == "Idioma":
-            opcao_escolhida  = self.buscar_idioma
+            opcao_escolhida  = self.buscar_idioma()
             for musica in self.__musicas:
                 if musica.idioma == opcao_escolhida and filtro in musica.titulo:
                     lista_de_musicas.append(musica)
@@ -70,25 +75,23 @@ class BibliotecaDeMusicas:
       
         cont = 0
         for musica in lista_de_musicas:
-            print(f"{musica} {cont}")
+            print(f"{musica} [{cont}]")
         escolha_musica = int(input("Selecione o id da música desejada: "))
         return lista_de_musicas[escolha_musica]
 
         
 
         
-
-               
-    def buscar_genero(self, genero: Genero, filtro: str):
+    def buscar_genero(self):
         cont = 0
         for genero in self.__generos:
             print(f"{genero} [{cont}]")
             cont += 1
         escolha = int(input("Insira o id do gênero escolhido: "))
-        return self.__artistas[escolha]
+        return self.__generos[escolha]
 
     
-    def buscar_artista(self, artista):
+    def buscar_artista(self):
         cont = 0
         for artista in self.__artistas:
             print(f"{artista} [{cont}]")
@@ -97,7 +100,7 @@ class BibliotecaDeMusicas:
         return self.__artistas[escolha]
 
     
-    def buscar_idioma(self, idioma):
+    def buscar_idioma(self):
         cont = 0
         for idioma in self.__idiomas:
             print(f"{idioma} [{cont}]")
@@ -111,6 +114,12 @@ class BibliotecaDeMusicas:
         if isinstance(musica, Musica):
             if musica not in self.__musicas:
                 self.__musicas.append(musica)
+            if musica.genero not in self.__generos:
+                self.__generos.append(musica.genero)
+            if musica.idioma not in self.__idiomas:
+                self.__idiomas.append(musica.idioma)
+            if musica.artista not in self.__artistas:
+                self.__artistas.append(musica.artista)
 
     def remover_musica(self, musica: Musica):
         if isinstance(musica, Musica):

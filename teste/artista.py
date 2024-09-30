@@ -27,3 +27,7 @@ class Artista:
             self.__lista_artista.append(musica)
     def incrementar_contador_artista(self):
             self.__contador_artista += 1
+
+    
+    def __str__(self):
+        return self.__nome_artista
