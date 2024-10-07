@@ -27,7 +27,7 @@ class Idioma:
             self.__lista_idioma.append(musica)
     
     def incrementar_contador_idioma(self):
-            self.__contador_ideioma += 1
+            self.__contador_idioma += 1
 
     
     def __str__(self):
