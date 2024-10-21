@@ -1,5 +1,5 @@
-
 from musica import Musica
+
 class Fila_Karaoke:
     def __init__(self):
         self.__fila_karaoke = []
