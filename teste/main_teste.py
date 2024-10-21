@@ -42,8 +42,6 @@ Genero1 = Genero("Genro_Novo")
 Musica1 = Musica("nova_musica", Artista1, Genero1, Idioma1)
 
 
-
-
 Cliente1.adicionar_musica_biblioteca(Biblioteca, Musica1)
 
 

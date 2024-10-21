@@ -1,4 +1,4 @@
-class Telacliente():
+class TelaCliente():
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def tela_opcoes(self):
     print("-------- CLIENTES ----------")
@@ -6,7 +6,7 @@ class Telacliente():
     print("1 - Incluir cliente")
     print("2 - Alterar cliente")
     print("3 - Excluir cliente")
-    print("4 - Alterar cliente")
+    print("4 - Listar clientes")
     # print("0 - Retornar")
 
     
@@ -43,3 +43,7 @@ class Telacliente():
 
   def mostra_mensagem(self, msg):
     print(msg)
+
+
+  
+  

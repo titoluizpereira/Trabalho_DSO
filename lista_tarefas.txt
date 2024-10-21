@@ -1,0 +1,14 @@
+1 - controladores - instanciar o genero, idioma, artista no controlador de musica. 
+1.5 - telas
+
+2 - arrumar a fila
+
+3 - criar a classe pedido
+
+
+4 - criar controlador sistema
+4.5 - musica, mesa, biblioteca, filakaraoke
+5 - criar tela no controlador
+
+
+

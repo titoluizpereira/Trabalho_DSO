@@ -1,12 +1,11 @@
 from cliente import Cliente
-from teste.tela import TelaCliente
+from tela import TelaCliente
 
 class Controlador():
-    def __init__(self, tela: TelaCliente):
+    def __init__(self, controladorcliente):
         self.__clientes = []
-        self.__tela = tela
-
-    
+        self.__tela = TelaCliente()
+        self.__controladorcliente = controladorcliente
 
     def incluir_cliente(self):
         dados_cliente = self.__tela.receber_dados()
@@ -15,18 +14,22 @@ class Controlador():
     
     def alterar_cliente(self):
         self.lista_cliente()
-        cpf_selecionado = self._tela.seleciona_cliente()
+        if self.__clientes == []:
+            self.__tela.mostra_mensagem("Nenhum cliente cadastrado")
+            self.abre_tela()
+        cpf_selecionado = self.__tela.seleciona_cliente()
         cliente = self.buscar_cliente_cpf(cpf_selecionado)
 
         if cliente is not None:
-            novos_dados_cliente = self.__tela.pegar_dados_cliente()
+            novos_dados_cliente = self.__tela.receber_dados()
             cliente.nome = novos_dados_cliente["nome"]
             cliente.cpf = novos_dados_cliente["cpf"]
             cliente.email = novos_dados_cliente["email"]
             cliente.telefone = novos_dados_cliente["telefone"]
             self.lista_cliente()
+
         else:
-            self.__tela.mostrar_mensagem("CLIENTE INFORMADO NÃO CADASTRADO!!!!!!!")
+            self.__tela.mostra_mensagem("CLIENTE INFORMADO NÃO CADASTRADO!!!!!!!")
 
     def excluir_cliente(self):
         self.lista_cliente()
@@ -37,7 +40,7 @@ class Controlador():
             self.__clientes.remove(cliente)
             self.lista_cliente()
         else:
-            self.__tela.mostrar_mensagem("CLIENTE INFORMADO NÃO CADASTRADO!!!!!!!")
+            self.__tela.mostra_mensagem("CLIENTE INFORMADO NÃO CADASTRADO!!!!!!!")
 
     def buscar_cliente_cpf(self, cpf: int):
         for cliente in self.__clientes:
@@ -50,18 +53,18 @@ class Controlador():
         for cliente in self.__clientes:
             self.__tela.mostrar_cliente({"nome": cliente.nome,"cpf": cliente.cpf, "email" : cliente.email, "telefone": cliente.telefone})
 
-
     # def retornar(self):
     #     self.__controlador_sistema 
 
     def abre_tela(self):
-        lista_opcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.excluir_cliente, 4:self.lista_cliente }
+        listaopcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.excluir_cliente, 4:self.lista_cliente }
         continua = True
+        
         while continua:
-            lista_opcoes[self.__tela.opcoes]()
+            listaopcoes[self.__tela.tela_opcoes()]()
 
     def inicializa_tela(self):
-        self.__abre_tela()
+        self.abre_tela()
 
         
 
