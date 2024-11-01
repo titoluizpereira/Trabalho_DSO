@@ -71,9 +71,9 @@ class Cliente:
                 else:
                     criterio = "Apenas_Nome"
 
-
+ 
                 buscar_filtro = str(input("Nome da música (caso não queira filtrar por nome ou ver todas as musicas, deixe em branco):"))
-                if not buscar_filtro.strip() :
+                if not buscar_filtro.strip() : 
                     buscar_filtro = ""
                 musica = biblioteca_de_musicas.buscar_musica(criterio, buscar_filtro)
                 

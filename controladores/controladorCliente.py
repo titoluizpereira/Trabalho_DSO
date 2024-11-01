@@ -1,7 +1,8 @@
-from cliente import Cliente
-from tela import TelaCliente
+from entidades.cliente import Cliente
+from telas.telacliente import TelaCliente
 
-class Controlador():
+
+class ControladorCliente():
     def __init__(self, controladorcliente):
         self.__clientes = []
         self.__tela = TelaCliente()
