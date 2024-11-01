@@ -1,4 +1,4 @@
-from cliente import Cliente
+from .cliente import Cliente
 
 class Mesa:
     def __init__(self, numero:int):

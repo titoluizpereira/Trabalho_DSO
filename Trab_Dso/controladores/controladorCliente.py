@@ -1,5 +1,5 @@
-from entidades.cliente import Cliente
-from telas.telacliente import TelaCliente
+from ..entidades.cliente import Cliente
+from ..telas.telacliente import TelaCliente
 
 
 class ControladorCliente():

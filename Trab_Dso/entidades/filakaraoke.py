@@ -1,4 +1,4 @@
-from musica import Musica
+from .musica import Musica
 
 class Fila_Karaoke:
     def __init__(self):

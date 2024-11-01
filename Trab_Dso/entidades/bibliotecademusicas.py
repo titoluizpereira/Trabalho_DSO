@@ -1,7 +1,7 @@
-from musica import Musica
-from genero import Genero
-from idioma import Idioma
-from artista import Artista
+from .musica import Musica
+from .genero import Genero
+from .idioma import Idioma
+from .artista import Artista
 
 
 class BibliotecaDeMusicas:

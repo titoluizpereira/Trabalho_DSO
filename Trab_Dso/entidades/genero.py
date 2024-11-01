@@ -1,4 +1,4 @@
-from musica import Musica
+from .musica import Musica
 
 class Genero:
     def __init__(self, nome_genero):
