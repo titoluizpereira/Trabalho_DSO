@@ -40,7 +40,7 @@ class ControladorMesa():
 
 
     def abre_tela(self):
-        listaopcoes = {1: self.incluir_mesa, 2: self.excluir_mesa, 3: self.lista_mesa, 4:self.alocar_cliente }
+        listaopcoes = {1: self.incluir_mesa, 2: self.excluir_mesa, 3: self.lista_mesa, 4:self.alocar_cliente, 5: self.desalocar_cliente }
         continua = True
         
         while continua:
@@ -60,7 +60,16 @@ class ControladorMesa():
 
         mesa.clientes.append(cliente)
 
+    def desalocar_cliente(self):
+        self.lista_mesa()
+        numero_mesa = self.__tela.seleciona_mesa()
+        mesa = self.buscar_mesa_por_numero(numero_mesa)
+        from ..entidades.main import ControladorCliente1, TelaCliente1
+        ControladorCliente1.lista_cliente()
+        cliente = TelaCliente1.seleciona_cliente()
+        cliente = ControladorCliente1.buscar_cliente_cpf(cliente)
 
+        mesa.clientes.remove(cliente)
 
 ControladorMesa1 = ControladorMesa("ControladorMesa")
 

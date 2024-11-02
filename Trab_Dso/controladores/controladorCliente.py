@@ -17,7 +17,7 @@ class ControladorCliente():
         self.lista_cliente()
         if self.__clientes == []:
             self.__tela.mostra_mensagem("Nenhum cliente cadastrado")
-            self.abre_tela()
+            self.abrir_tela()
         cpf_selecionado = self.__tela.seleciona_cliente()
         cliente = self.buscar_cliente_cpf(cpf_selecionado)
 
@@ -57,7 +57,7 @@ class ControladorCliente():
     # def retornar(self):
     #     self.__controlador_sistema 
 
-    def abre_tela(self):
+    def abrir_tela(self):
         listaopcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.excluir_cliente, 4:self.lista_cliente }
         continua = True
         
@@ -65,7 +65,7 @@ class ControladorCliente():
             listaopcoes[self.__tela.tela_opcoes()]()
 
     def inicializa_tela(self):
-        self.abre_tela()
+        self.abrir_tela()
 
         
 
