@@ -6,6 +6,7 @@ class Telafila():
         print("2 - Passar a vez pro proximo")
         print("3 - Adicionar Pedido")
         print("4 - Remover Pedido")
+        print("0 - Retornar")
 
     def mostrar_fila(self, posicao, cliente, musica):
         print(f'Posição: {posicao}, Cliente: {cliente.nome} Cpf: {cliente.cpf}, Musica: {musica.titulo}')

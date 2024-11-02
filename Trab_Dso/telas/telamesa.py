@@ -7,10 +7,11 @@ class TelaMesa():
         print("3 - Listar mesa")
         print("4 - Alocar Cliente")
         print("5 - Desalocar Cliente")
+        print("0 - Retornar")
 
 
         opcao = int(input("Escolha a opcao: "))
-        while opcao > 5 or opcao < 1:
+        while opcao > 5 or opcao < 0:
               opcao = int(input("Escolha errada, selecione um valor válido: "))
       
         return opcao

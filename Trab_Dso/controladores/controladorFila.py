@@ -1,13 +1,12 @@
 from ..entidades.filakaraoke import Fila_Karaoke
-from ..telas.telafila_karaoke import TelaFila
+from ..telas.telafila_karaoke import Telafila
 
 class ControladorFila:
     #controlador_sistema
-    def __init__(self, Fila, controlador_sistema ):
+    def __init__(self,  controlador_sistema ):
         self.__controlador_sistema = controlador_sistema
-        self.__tela = TelaFila()
-        # self.__fila = self.__controlador_sistema._SystemController__fila
-        self.__fila = Fila
+        self.__tela = Telafila()
+        self.__fila = Fila_Karaoke()
 
     def abrir_tela(self):
         opcoes = {
@@ -15,7 +14,7 @@ class ControladorFila:
             2: self.proximo_cantar,
             3: self.adicionar_pedido,
             4: self.remover_pedido,
-            0: self.return_to_main
+            0: self.sair
         }
 
         while True:
@@ -84,5 +83,5 @@ class ControladorFila:
         except Exception as e:
             self.__tela.mostrar_menssagem(f"Error removing request: {str(e)}")
 
-    def return_to_main(self):
-        self.__controlador_sistema.open_screen()
+    def sair(self):
+        self.__controlador_sistema.abrir_tela()

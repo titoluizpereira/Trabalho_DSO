@@ -1,15 +1,20 @@
 from ..controladores import controladorCliente, controladorFila, controladorMesa, controladorMusica, controladorBibliotecaDeMusica 
-
-class Systemcontrolador:
+from ..telas import telasistema
+class ControladorSistema:
     def __init__(self):
-        self.__cliente_controlador = ControladorCliente(self)
-        self.__musicacontrolador = ControladorMusica(self)
-        self.__fila_controlador = ControladorFila(self)
-        self.__mesa_controlador = ControladorMesa(self)
-        self.__tela = TelaSistema()
+        self.__bibliotecademusicas = controladorBibliotecaDeMusica.ControladorBibliotecaDeMusica(self)
+        self.__cliente_controlador = controladorCliente.ControladorCliente(self)
+        self.__musica_controlador = controladorMusica.ControladorMusica(self)
+        self.__fila_controlador = controladorFila.ControladorFila(self)
+        self.__mesa_controlador = controladorMesa.ControladorMesa(self)
 
+        self.__tela = telasistema.SystemScreen()
 
-    def abri(self):
+    @property
+    def bibliotecademusicas_controlador(self):
+        return self.__bibliotecademusicas
+
+    def iniciar(self):
         self.abrir_tela()
 
     def abrir_tela(self):

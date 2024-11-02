@@ -7,7 +7,7 @@ class TelaCliente():
     print("2 - Alterar cliente")
     print("3 - Excluir cliente")
     print("4 - Listar clientes")
-    # print("0 - Retornar")
+    print("0 - Retornar")
 
     
     opcao = int(input("Escolha a opcao: "))

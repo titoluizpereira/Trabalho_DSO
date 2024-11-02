@@ -44,41 +44,6 @@ class BibliotecaDeMusicas:
         self.__generos.append(genero)
 
 
-
-    def buscar_musica(self, criterio: str, filtro: str):
-        lista_de_musicas = []
-        cont = 0
-        if criterio == "Gênero":
-            opcao_escolhida = self.buscar_genero()
-            for musica in self.__musicas:
-                if musica.genero == opcao_escolhida and filtro in musica.titulo:
-                    lista_de_musicas.append(musica)
-
-
-        elif criterio == "Artista":
-            opcao_escolhida = self.buscar_artista()
-            for musica in self.__musicas:
-                if musica.artista == opcao_escolhida and filtro in musica.titulo:
-                    lista_de_musicas.append(musica)
-
-
-        elif criterio == "Idioma":
-            opcao_escolhida  = self.buscar_idioma()
-            for musica in self.__musicas:
-                if musica.idioma == opcao_escolhida and filtro in musica.titulo:
-                    lista_de_musicas.append(musica)
-        else:
-            for musica in self.__musicas:
-                if filtro in musica.titulo:
-                    lista_de_musicas.append(musica)
-        
-      
-        cont = 0
-        for musica in lista_de_musicas:
-            print(f"{musica} [{cont}]")
-        escolha_musica = int(input("Selecione o id da música desejada: "))
-        return lista_de_musicas[escolha_musica]
-
         
 
         
@@ -120,6 +85,9 @@ class BibliotecaDeMusicas:
                 self.__idiomas.append(musica.idioma)
             if musica.artista not in self.__artistas:
                 self.__artistas.append(musica.artista)
+            return "musica adicionada"
+
+
 
     def remover_musica(self, musica: Musica):
         if isinstance(musica, Musica):

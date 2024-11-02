@@ -3,10 +3,11 @@ from ..telas.telacliente import TelaCliente
 
 
 class ControladorCliente():
-    def __init__(self, controladorcliente):
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
         self.__clientes = []
         self.__tela = TelaCliente()
-        self.__controladorcliente = controladorcliente
+
 
     def incluir_cliente(self):
         dados_cliente = self.__tela.receber_dados()
@@ -58,7 +59,7 @@ class ControladorCliente():
     #     self.__controlador_sistema 
 
     def abrir_tela(self):
-        listaopcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.excluir_cliente, 4:self.lista_cliente }
+        listaopcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.excluir_cliente, 4:self.lista_cliente, 0: self.sair }
         continua = True
         
         while continua:
@@ -67,5 +68,7 @@ class ControladorCliente():
     def inicializa_tela(self):
         self.abrir_tela()
 
+    def sair(self):
+        self.__controlador_sistema.abrir_tela()
         
 

@@ -2,10 +2,11 @@ from ..entidades.mesa import Mesa
 from ..telas.telamesa import TelaMesa
 
 class ControladorMesa():
-    def __init__(self, controladormesa):
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
         self.__mesas = []
         self.__tela = TelaMesa()
-        self.__controladormesa = controladormesa
+
 
     def incluir_mesa(self):
         numero = len(self.__mesas)
@@ -39,15 +40,15 @@ class ControladorMesa():
             self.__tela.mostrar_mesa({"numero" : mesa.numero, "clientes": mesa.clientes})
 
 
-    def abre_tela(self):
-        listaopcoes = {1: self.incluir_mesa, 2: self.excluir_mesa, 3: self.lista_mesa, 4:self.alocar_cliente, 5: self.desalocar_cliente }
+    def abrir_tela(self):
+        listaopcoes = {1: self.incluir_mesa, 2: self.excluir_mesa, 3: self.lista_mesa, 4:self.alocar_cliente, 5: self.desalocar_cliente, 0: self.sair }
         continua = True
         
         while continua:
             listaopcoes[self.__tela.tela_opcoes()]()
 
     def inicializa_tela(self):
-        self.abre_tela()
+        self.abrir_tela()
 
     def alocar_cliente(self):
         self.lista_mesa()
@@ -71,6 +72,7 @@ class ControladorMesa():
 
         mesa.clientes.remove(cliente)
 
-ControladorMesa1 = ControladorMesa("ControladorMesa")
+    def sair(self):
+        self.__controlador_sistema.abrir_tela()
 
 

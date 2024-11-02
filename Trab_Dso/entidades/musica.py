@@ -1,5 +1,6 @@
 class Musica():
-    def __init__(self, titulo, artista, genero, idioma):
+    def __init__(self,codigo, titulo, artista, genero, idioma):
+        self.__codigo = codigo
         self.__titulo = titulo
         self.__artista = artista
         self.__genero = genero
@@ -7,6 +8,14 @@ class Musica():
         self.__ja_cantada = False
         self.__contador = 0
    
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def codigo(self, codigo):
+        self.__codigo = codigo
+
     @property
     def titulo(self):
         return self.__titulo

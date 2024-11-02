@@ -1,15 +1,15 @@
 from typing import Optional, List
-from .telas.tela_musica import TelaMusica
-from .entidades.musica import Musica
-from .entidades.artista import Artista
-from .entidades.genero import Genero
-from .entidades.idioma import Idioma
+from ..telas.telamusica import TelaMusica
+from ..entidades.musica import Musica
+from ..entidades.artista import Artista
+from ..entidades.genero import Genero
+from ..entidades.idioma import Idioma
 
 class ControladorMusica:
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela = TelaMusica()
-        self.__controlador_biblioteca = self.__controlador_sistema._ControladorSistema__bibliotecademusica
+        self.__controlador_biblioteca = self.__controlador_sistema.bibliotecademusicas_controlador
 
     def abrir_tela(self):
         opcoes = {
@@ -19,7 +19,7 @@ class ControladorMusica:
             4: self.listar_por_artista,
             5: self.listar_por_genero,
             6: self.listar_por_idioma,
-            0: self.retornar_menu_principal
+            0: self.sair
         }
 
         while True:
@@ -35,11 +35,44 @@ class ControladorMusica:
                 self.__tela.mostrar_mensagem(f"Um erro ocorreu: {str(e)}")
 
     def registrar_musica(self):
+
         try:
-            dados_musica = self.__tela.pegar_dados_musica()
+            codigo = self.__controlador_biblioteca.retornar_ultimo_codigo()
+            dados_musica = self.__tela.pegar_dados_musica() #ID É O SISTEMA QUE DEFINE
+            
+            #FAZER FUNÇÃO INTERMEDIARIA PAR MOSTRAR CATEGORIAS JÁ CADASTRADAS E DAR OPCAO DE CRiAR NOVO
+            
+            opcoes_de_artista = self.__controlador_biblioteca.lista_de_artista()
+            opcoes = self.__tela.escolher_ou_adicionar_artista(opcoes_de_artista)
+            if opcoes.isdigit():
+                artista = self.__controlador_biblioteca.retornar_artista_por_id(id)
+                dados_musica["artista"] = artista
+            else:
+                novo_artista = Artista(opcoes)
+                dados_musica["artista"] = novo_artista
+            
+            opcoes_genero = self.__controlador_biblioteca.lista_de_genero()
+            opcoes = self.__tela.escolher_ou_adicionar_genero(opcoes_genero)
+            if opcoes.isdigit():
+                genero = self.__controlador_biblioteca.retornar_genero_por_id(id)
+                dados_musica["genero"] = genero
+            else:
+                novo_genero = Genero(opcoes)
+                dados_musica["genero"] = novo_genero
+
+            opcoes_idioma = self.__controlador_biblioteca.lista_de_idioma()
+            opcoes = self.__tela.escolher_ou_adicionar_idioma(opcoes_idioma)
+            if opcoes.isdigit():
+                idioma = self.__controlador_biblioteca.retornar_idioma_por_id(id)
+                dados_musica["idioma"] = idioma
+            else:
+                novo_idioma = Idioma(opcoes)
+                dados_musica["idioma"] = novo_idioma
+
+
             nova_musica = Musica(
-                dados_musica["titulo"],
-                dados_musica["codigo"],
+                codigo,
+                dados_musica["titulo"], 
                 dados_musica["artista"],
                 dados_musica["genero"],
                 dados_musica["idioma"]
@@ -55,9 +88,9 @@ class ControladorMusica:
         return self.__controlador_biblioteca.achar_musica_por_codigo(codigo)
 
     def listar_musica(self):
-        lista_musica = self.__controlador_biblioteca.lista_musica
+        lista_musica = self.__controlador_biblioteca.lista_musica()
         if not lista_musica:
-            self.__tela.mostrar_mensagem("Música não registrada")
+            self.__tela.mostrar_mensagem("Sem Músicas registrada")
             return
         
         for musica in lista_musica:
@@ -83,5 +116,5 @@ class ControladorMusica:
         for musica in lista_musica:
             self.__tela.mostrar_musica(musica)
 
-    def retornar_menu_principal(self):
+    def sair(self):
         self.__controlador_sistema.abrir_tela()
