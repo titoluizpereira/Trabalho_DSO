@@ -1,0 +1,28 @@
+from typing import Optional, List
+from ..telas.tela_bibliotecademusica import TelaBibliotecaDeMusica
+from ..entidades.bibliotecademusicas import BibliotecaDeMusicas
+from ..entidades.musica import Musica
+from ..entidades.artista import Artista
+from ..entidades.genero import Genero
+from ..entidades.idioma import Idioma
+
+class ControladorBibliotecaDeMusica:
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
+        self.__bibliotecademusica = self.__controlador_sistema._ControladorSistema__bibliotecademusica
+        self.__tela = TelaBibliotecaDeMusica()
+
+    def adicionar_musica(self, musica: Musica) -> bool:
+        return self.__bibliotecademusica.adicionar_musica(musica)
+
+    def buscar_musica(self, codigo: str) -> Musica:
+        return self.__bibliotecademusica.buscar_musica_por_codigo(codigo)
+
+    def pegar_musica_por_artista(self, artista: Artista) -> list:
+        return self.__bibliotecademusica.pegar_musica_por_artista(artista)
+
+    def pegar_musica_por_genero(self, genero: Genero) -> list:
+        return self.__bibliotecademusica.pegar_musica_por_genero(genero)
+
+    def pegar_musica_por_idioma(self, idioma: Idioma) -> list:
+        return self.__bibliotecademusica.pegar_musica_por_idioma(idioma)
