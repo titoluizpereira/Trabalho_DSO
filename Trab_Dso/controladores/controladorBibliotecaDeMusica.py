@@ -33,6 +33,7 @@ class ControladorBibliotecaDeMusica:
     
     def lista_musica(self):
         return self.__bibliotecademusica.musicas
+        
     def lista_de_artista(self):
         return self.__bibliotecademusica.artistas
     def retornar_artista_por_id(self, id):

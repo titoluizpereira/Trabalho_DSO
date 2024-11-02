@@ -43,7 +43,10 @@ class BibliotecaDeMusicas:
     def generos(self, genero: Genero):
         self.__generos.append(genero)
 
-
+    def buscar_musica_por_codigo(self, codigo):
+        for musica in self.__musicas:
+            if musica.codigo == codigo:
+                return musica
         
 
         

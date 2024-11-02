@@ -11,7 +11,7 @@ class TelaCliente():
 
     
     opcao = int(input("Escolha a opcao: "))
-    while opcao > 4 or opcao < 1:
+    while opcao > 4 or opcao < 0:
           opcao = int(input("Escolha errada, selecione um valor válido: "))
       
     return opcao

@@ -36,6 +36,14 @@ class ControladorSistema:
             except ValueError:
                 self.__tela.mostra_menssagem("Por favor coloque um valor valido")
 
+    @property
+    def cliente_controlador(self):
+        return self.__cliente_controlador
+    
+    @property
+    def musica_controlador(self):
+        return self.__musica_controlador
+
 
     def fechar_sistema(self):
         self.__tela.mostra_menssagem("Fechando ...")

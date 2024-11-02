@@ -11,14 +11,20 @@ class ControladorMusica:
         self.__tela = TelaMusica()
         self.__controlador_biblioteca = self.__controlador_sistema.bibliotecademusicas_controlador
 
+    @property
+    def tela(self):
+        return self.__tela
+    @property
+    def controlador_biblioteca(self):
+        return self.__controlador_biblioteca
     def abrir_tela(self):
         opcoes = {
             1: self.registrar_musica,
-            2: self.buscar_musica,
-            3: self.listar_musica,
-            4: self.listar_por_artista,
-            5: self.listar_por_genero,
-            6: self.listar_por_idioma,
+            # 2: self.buscar_musica, nao deve ser uma opcao na minha opiniao
+            2: self.listar_musica,
+            3: self.listar_artistas,
+            4: self.listar_generos,
+            5: self.listar_idiomas,
             0: self.sair
         }
 
@@ -45,7 +51,7 @@ class ControladorMusica:
             opcoes_de_artista = self.__controlador_biblioteca.lista_de_artista()
             opcoes = self.__tela.escolher_ou_adicionar_artista(opcoes_de_artista)
             if opcoes.isdigit():
-                artista = self.__controlador_biblioteca.retornar_artista_por_id(id)
+                artista = self.__controlador_biblioteca.retornar_artista_por_id(int(opcoes))
                 dados_musica["artista"] = artista
             else:
                 novo_artista = Artista(opcoes)
@@ -54,7 +60,7 @@ class ControladorMusica:
             opcoes_genero = self.__controlador_biblioteca.lista_de_genero()
             opcoes = self.__tela.escolher_ou_adicionar_genero(opcoes_genero)
             if opcoes.isdigit():
-                genero = self.__controlador_biblioteca.retornar_genero_por_id(id)
+                genero = self.__controlador_biblioteca.retornar_genero_por_id(int(opcoes))
                 dados_musica["genero"] = genero
             else:
                 novo_genero = Genero(opcoes)
@@ -63,7 +69,7 @@ class ControladorMusica:
             opcoes_idioma = self.__controlador_biblioteca.lista_de_idioma()
             opcoes = self.__tela.escolher_ou_adicionar_idioma(opcoes_idioma)
             if opcoes.isdigit():
-                idioma = self.__controlador_biblioteca.retornar_idioma_por_id(id)
+                idioma = self.__controlador_biblioteca.retornar_idioma_por_id(int(opcoes))
                 dados_musica["idioma"] = idioma
             else:
                 novo_idioma = Idioma(opcoes)
@@ -116,5 +122,19 @@ class ControladorMusica:
         for musica in lista_musica:
             self.__tela.mostrar_musica(musica)
 
+
+    def listar_artistas(self):
+        resultados = self.__controlador_biblioteca.lista_de_artista()
+        for resultado in resultados:
+            self.__tela.mostrar_mensagem(resultado)
+    def listar_generos(self):
+        resultados = self.__controlador_biblioteca.lista_de_genero()
+        for resultado in resultados:
+            self.__tela.mostrar_mensagem(resultado)
+    def listar_idiomas(self):
+        resultados = self.__controlador_biblioteca.lista_de_idioma()
+        for resultado in resultados:
+            self.__tela.mostrar_mensagem(resultado)
+        
     def sair(self):
         self.__controlador_sistema.abrir_tela()

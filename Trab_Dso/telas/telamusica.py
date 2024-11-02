@@ -6,11 +6,11 @@ class TelaMusica:
     def mostrar_opcoes(self) -> int:
         print("\n=== Gerenciamento de Músicas ===")
         print("1. Registrar Nova Música")
-        print("2. Buscar Música")
-        print("3. Listar Todas as Músicas")
-        print("4. Listar por Artista")
-        print("5. Listar por Gênero")
-        print("6. Listar por Idioma")
+        # print("2. Buscar Música")
+        print("2. Listar Todas as Músicas")
+        print("3. Listar por Artista")
+        print("4. Listar por Gênero")
+        print("5. Listar por Idioma")
         print("0. Retornar")
         
         while True:

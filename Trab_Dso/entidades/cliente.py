@@ -7,8 +7,8 @@ class Cliente:
         self.__cpf = cpf
         self.__email = email
         self.__telefone = telefone
-        # self.__musicas_cantadas = 0
-        # self.__prioridade_fila = 0
+        self.__musicas_cantadas = 0
+        self.__prioridade_fila = 0
         
 
     @property

@@ -8,6 +8,9 @@ class Telafila():
         print("4 - Remover Pedido")
         print("0 - Retornar")
 
+        resposta = int(input("Escolha o numero da opcao desejada: "))
+        return resposta
+
     def mostrar_fila(self, posicao, cliente, musica):
         print(f'Posição: {posicao}, Cliente: {cliente.nome} Cpf: {cliente.cpf}, Musica: {musica.titulo}')
 
@@ -23,7 +26,7 @@ class Telafila():
         id= input("Id da musica: ")
         return id
     
-    def mostra_mensagem(self, msg):
+    def mostra_menssagem(self, msg):
         print(msg)
 
     

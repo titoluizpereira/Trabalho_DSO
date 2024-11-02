@@ -8,7 +8,10 @@ class ControladorCliente():
         self.__clientes = []
         self.__tela = TelaCliente()
 
-
+    @property
+    def tela(self):
+        return self.__tela
+    
     def incluir_cliente(self):
         dados_cliente = self.__tela.receber_dados()
         NovoCliente = Cliente(dados_cliente["nome"], dados_cliente["cpf"], dados_cliente["email"], dados_cliente["telefone"])

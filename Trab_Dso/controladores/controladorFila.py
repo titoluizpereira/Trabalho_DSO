@@ -23,18 +23,18 @@ class ControladorFila:
                 if opcao in opcoes:
                     opcoes[opcao]()
                 else:
-                    self.__tela.mostrar_menssagem("Opcao Invalida")
+                    self.__tela.mostra_menssagem("Opcao Invalida")
             except ValueError:
-                self.__tela.mostrar_menssagem("Insira um numero valido")
+                self.__tela.mostra_menssagem("Insira um numero valido")
             except Exception as e:
-                self.__tela.mostrar_menssagem(f"An error occurred: {str(e)}")
+                self.__tela.mostra_menssagem(f"An error occurred: {str(e)}")
 
     def inicializa_tela(self):
         self.abrir_tela()
         
     def mostrar_fila(self):
         if not self.__fila.fila_karaoke:
-            self.__tela.mostrar_menssagem("fila está vazia")
+            self.__tela.mostra_menssagem("fila está vazia")
             return
             
         for i, (cliente, musica) in enumerate(self.__fila.fila_karaoke):
@@ -46,27 +46,27 @@ class ControladorFila:
             cliente, musica = proximo
             self.__tela.proximo_cantar(cliente, musica)
         else:
-            self.__tela.mostrar_menssagem("fila está vazia")
+            self.__tela.mostra_menssagem("fila está vazia")
 
     def adicionar_pedido(self):
         try:
 
-            dados_cliente = self.__controlador_sistema._SystemController__client_controller.tela.lista_cliente()
+            dados_cliente = self.__controlador_sistema.cliente_controlador.lista_cliente()
             dados_cliente = self.__tela.receber_cpf_cliente()
-            dados_musica= self.__controlador_sistema._SystemController__music_controller.tela.lista_musica()
+            dados_musica= self.__controlador_sistema.musica_controlador.listar_musica()
             dados_musica= self.__tela.receber_id_musica()
             
 
-            cliente = self.__controlador_sistema._SystemController__client_controller.buscar_cliente_cpf(dados_cliente["cpf"])
-            musica = self.__controlador_sistema._SystemController__music_controller.find_music(dados_musica["id"])
+            cliente = self.__controlador_sistema.cliente_controlador.buscar_cliente_cpf(dados_cliente)
+            musica = self.__controlador_sistema.musica_controlador.controlador_biblioteca.buscar_musica(int(dados_musica))
             
             if cliente and musica:
                 self.__fila.adicionar_na_fila(cliente, musica)
-                self.__tela.mostrar_menssagem("Pedido adicionado")
+                self.__tela.mostra_menssagem("Pedido adicionado")
             else:
-                self.__tela.mostrar_menssagem("Cliente ou Música não encontrados")
+                self.__tela.mostra_menssagem("Cliente ou Música não encontrados")
         except Exception as e:
-            self.__tela.mostrar_menssagem(f"Error adding request: {str(e)}")
+            self.__tela.mostra_menssagem(f"Error adding request: {str(e)}")
 
     def remover_pedido(self):
         try:
@@ -75,13 +75,13 @@ class ControladorFila:
             
             if cliente:
                 if self.__fila.remover_fila(cliente):
-                    self.__tela.mostrar_menssagem("Pedido removido")
+                    self.__tela.mostra_menssagem("Pedido removido")
                 else:
-                    self.__tela.mostrar_menssagem("Cliente não está na fila")
+                    self.__tela.mostra_menssagem("Cliente não está na fila")
             else:
-                self.__tela.mostrar_menssagem("Cliente não encontrado")
+                self.__tela.mostra_menssagem("Cliente não encontrado")
         except Exception as e:
-            self.__tela.mostrar_menssagem(f"Error removing request: {str(e)}")
+            self.__tela.mostra_menssagem(f"Error removing request: {str(e)}")
 
     def sair(self):
         self.__controlador_sistema.abrir_tela()
