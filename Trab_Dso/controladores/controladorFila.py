@@ -24,8 +24,7 @@ class ControladorFila:
                     opcoes[opcao]()
                 else:
                     self.__tela.mostra_menssagem("Opcao Invalida")
-            except ValueError:
-                self.__tela.mostra_menssagem("Insira um numero valido")
+
             except Exception as e:
                 self.__tela.mostra_menssagem(f"An error occurred: {str(e)}")
 
@@ -42,7 +41,9 @@ class ControladorFila:
 
     def proximo_cantar(self):
         proximo = self.__fila.proximo_cantar()
+        print("aqui a função proximo a cantar foi chamada")
         if proximo:
+            print("entrou no proximo")
             cliente, musica = proximo
             self.__tela.proximo_cantar(cliente, musica)
         else:

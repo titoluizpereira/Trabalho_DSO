@@ -16,27 +16,33 @@ class Fila_Karaoke:
 
 
     def adicionar_na_fila(self, cliente, musica: Musica):
+        inserido = False
         novo_pedido = [cliente, musica]
+
         if len(self.__fila_karaoke) == 0:
+            inserido = True
             self.__fila_karaoke.append(novo_pedido)
         else:
             print(f"tamanho da fila é {len(self.__fila_karaoke)}")
             for i, pedido in enumerate(self.__fila_karaoke):
-                if pedido[0].prioridade_fila < cliente.prioridade_fila:
+                if pedido[0].prioridade_fila > cliente.prioridade_fila:
             
                     self.__fila_karaoke.insert(i, novo_pedido)
-                    cliente.prioridade_fila -= 1
-                    return
+                    inserido = True
+                    break
+
+        if inserido==False:
+            self.__fila_karaoke.append(novo_pedido)
 
         cliente.prioridade_fila -= 1
 
     def proximo_cantar(self):
         if self.__fila_karaoke:
-            proximo = self.__fila_karaoke[0]
-            proximo.pop()
-            proximo[1].incrementar_contador()
-            proximo[1].ja_cantada = True
-            return proximo
+            cantor = self.__fila_karaoke[0]
+            cantor[1].incrementar_contador()
+            cantor[1].ja_cantada = True
+            self.__fila_karaoke.pop()
+            return cantor
 
     def ver_posicao(self, cliente):
         for pedidos in self.__fila_karaoke:
