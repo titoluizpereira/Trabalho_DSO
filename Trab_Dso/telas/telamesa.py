@@ -1,6 +1,6 @@
 class TelaMesa():
     def tela_opcoes(self):
-        print("-------- CLIENTES ----------")
+        print("-------- MESA ----------")
         print("Escolha a opcao")
         print("1 - Incluir mesa")
         print("2 - Excluir mesa")

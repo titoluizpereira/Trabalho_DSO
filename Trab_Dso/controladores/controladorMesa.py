@@ -21,7 +21,6 @@ class ControladorMesa():
         mesa = self.buscar_mesa_por_numero(numero_mesa)
 
         if mesa is not None:
-            print("chegou ate aqui")
             self.__mesas.remove(mesa)
             self.lista_mesa()
             self.__tela.mensagem_de_exclusão(numero_mesa)
@@ -54,21 +53,26 @@ class ControladorMesa():
         self.lista_mesa()
         numero_mesa = self.__tela.seleciona_mesa()
         mesa = self.buscar_mesa_por_numero(numero_mesa)
-        from ..entidades.main import ControladorCliente1, TelaCliente1
-        ControladorCliente1.lista_cliente()
-        cliente = TelaCliente1.seleciona_cliente()
-        cliente = ControladorCliente1.buscar_cliente_cpf(cliente)
+
+        self.__controlador_sistema.cliente_controlador.lista_cliente()
+        cpf = self.__controlador_sistema.cliente_controlador.tela.seleciona_cliente()
+        cliente = self.__controlador_sistema.cliente_controlador.buscar_cliente_cpf(cpf)
 
         mesa.clientes.append(cliente)
 
     def desalocar_cliente(self):
-        self.lista_mesa()
+        for mesa in self.__mesas:
+            if len(mesa.clientes) > 0:
+                mesa = {"numero": mesa.numero, "clientes":mesa.clientes}
+                self.__tela.mostrar_mesa(mesa)
         numero_mesa = self.__tela.seleciona_mesa()
         mesa = self.buscar_mesa_por_numero(numero_mesa)
-        from ..entidades.main import ControladorCliente1, TelaCliente1
-        ControladorCliente1.lista_cliente()
-        cliente = TelaCliente1.seleciona_cliente()
-        cliente = ControladorCliente1.buscar_cliente_cpf(cliente)
+        for cliente in mesa.clientes:
+                dados = {"nome":cliente.nome, "cpf": cliente.cpf, "email":cliente.email, "telefone":cliente.telefone}
+                self.__controlador_sistema.cliente_controlador.tela.mostrar_cliente(dados)
+
+        cpf = self.__controlador_sistema.cliente_controlador.tela.seleciona_cliente()
+        cliente = self.__controlador_sistema.cliente_controlador.buscar_cliente_cpf(cpf)
 
         mesa.clientes.remove(cliente)
 

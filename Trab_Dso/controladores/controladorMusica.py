@@ -20,11 +20,11 @@ class ControladorMusica:
     def abrir_tela(self):
         opcoes = {
             1: self.registrar_musica,
-            # 2: self.buscar_musica, nao deve ser uma opcao na minha opiniao
             2: self.listar_musica,
             3: self.listar_artistas,
             4: self.listar_generos,
             5: self.listar_idiomas,
+            6: self.atualizar_musica,
             0: self.sair
         }
 
@@ -102,18 +102,6 @@ class ControladorMusica:
         for musica in lista_musica:
             self.__tela.mostrar_musica(musica)
 
-    def listar_por_artista(self, artista: Artista):
-        lista_musica = self.__controlador_biblioteca.pegar_musica_por_artista(artista)
-        self.__mostrar_musica_por_filtro(lista_musica)
-
-    def listar_por_genero(self, genero: Genero):
-        lista_musica = self.__controlador_biblioteca.pegar_musica_por_genero(genero)
-        self.__mostrar_musica_por_filtro(lista_musica)
-
-    def listar_por_idioma(self, idioma: Idioma):
-        lista_musica = self.__controlador_biblioteca.pegar_musica_por_idioma(idioma)
-        self.__mostrar_musica_por_filtro(lista_musica)
-
     def __mostrar_musica_por_filtro(self, lista_musica):
         if not lista_musica:
             self.__tela.mostrar_mensagem("Música não encontrada")
@@ -126,15 +114,40 @@ class ControladorMusica:
     def listar_artistas(self):
         resultados = self.__controlador_biblioteca.lista_de_artista()
         for resultado in resultados:
-            self.__tela.mostrar_mensagem(resultado)
+            cont = 0
+            self.__tela.mostrar_mensagem(f"{cont} - {resultado}")
+        id_escolhido = self.__tela.recebe_id_para_listar()
+        lista_musicas = self.__controlador_biblioteca.lista_musica()
+        for musica in lista_musicas:
+            if musica.artista == resultados[id_escolhido]:
+                self.__tela.mostrar_musica(musica)
+            
+
     def listar_generos(self):
         resultados = self.__controlador_biblioteca.lista_de_genero()
         for resultado in resultados:
-            self.__tela.mostrar_mensagem(resultado)
+            cont = 0
+            self.__tela.mostrar_mensagem(f"{cont} - {resultado}")
+        id_escolhido = self.__tela.recebe_id_para_listar()
+        lista_musicas = self.__controlador_biblioteca.lista_musica()
+        for musica in lista_musicas:
+            if musica.genero == resultados[id_escolhido]:
+                self.__tela.mostrar_musica(musica)
+
     def listar_idiomas(self):
         resultados = self.__controlador_biblioteca.lista_de_idioma()
         for resultado in resultados:
-            self.__tela.mostrar_mensagem(resultado)
-        
+            cont = 0
+            self.__tela.mostrar_mensagem(f"{cont} - {resultado}")
+        id_escolhido = self.__tela.recebe_id_para_listar()
+        lista_musicas = self.__controlador_biblioteca.lista_musica()
+        for musica in lista_musicas:
+            if musica.idioma == resultados[id_escolhido]:
+                self.__tela.mostrar_musica(musica)
+
+    def atualizar_musica(self):
+        self.listar_musica()
+        id_escolhido = self.__tela.recebe_id_para_listar()
+
     def sair(self):
         self.__controlador_sistema.abrir_tela()

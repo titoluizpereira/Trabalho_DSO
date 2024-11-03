@@ -6,11 +6,11 @@ class TelaMusica:
     def mostrar_opcoes(self) -> int:
         print("\n=== Gerenciamento de Músicas ===")
         print("1. Registrar Nova Música")
-        # print("2. Buscar Música")
         print("2. Listar Todas as Músicas")
         print("3. Listar por Artista")
         print("4. Listar por Gênero")
         print("5. Listar por Idioma")
+        print("6. Atualizar Música ")
         print("0. Retornar")
         
         while True:
@@ -68,7 +68,12 @@ class TelaMusica:
         escolha = input("Escolha o id de um idioma, caso queira adicionar novo digite o novo nome do idioma: ")
         return escolha
 
+    def recebe_id_para_listar(self):
+        id = int(input("Digite o id desejado: "))
+        return(id)
 
+    def mostrar_musica(self, musica):
+        print(f"{musica.titulo} - {musica.genero} - {musica.artista} - {musica.idioma}")
 
 
 
