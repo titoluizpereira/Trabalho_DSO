@@ -1,33 +1,8 @@
-from .musica import Musica
+from .atributoscategorias import AtributosCategorias
 
-class Genero:
+class Genero(AtributosCategorias):
     def __init__(self, nome_genero):
-        self.__nome_genero = nome_genero
-        self.__lista_genero = []  
-        self.__contador_genero = 0  
-
-    @property
-    def nome_genero (self):
-        return self.__nome_genero
-    
-    @nome_genero.setter
-    def nome_genero(self, nome_genero):
-        self.__nome_genero = nome_genero
-
-    @property
-    def lista_genero(self):
-        return self.__lista_genero
-
-    @property
-    def contador_genero(self):
-        return self.__contador_genero
-
-    def _adicionar_musica(self, musica):
-        if musica not in self.__lista_genero and isinstance(musica, Musica):
-            self.__lista_genero.append(musica)
-    
-    def incrementar_contador_genero(self):
-            self.__contador_genero += 1
+        super().__init__(nome_genero)
 
     def __str__(self):
-        return self.__nome_genero
+        return f"Gênero: {self.nome}"

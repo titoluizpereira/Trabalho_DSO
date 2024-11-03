@@ -1,5 +1,17 @@
+from .artista import Artista
+from .genero import Genero
+from .idioma import Idioma
+
 class Musica():
     def __init__(self,codigo, titulo, artista, genero, idioma):
+
+        if not isinstance(artista, Artista):
+            raise ValueError("Artista deve ser uma instância da classe Artista")
+        if not isinstance(genero, Genero):
+            raise ValueError("Gênero deve ser uma instância da classe Genero")
+        if not isinstance(idioma, Idioma):
+            raise ValueError("Idioma deve ser uma instância da classe Idioma")
+
         self.__codigo = codigo
         self.__titulo = titulo
         self.__artista = artista
@@ -27,27 +39,14 @@ class Musica():
     @property
     def artista(self):
         return self.__artista
-    
-    @artista.setter
-    def artista(self, artista):
-        self.__artista = artista
 
     @property
     def genero(self):
         return self.__genero
-    
-        
-    @genero.setter
-    def genero(self, genero):
-        self.__genero = genero
 
     @property
     def idioma(self):
         return self.__idioma
-    
-    @idioma.setter
-    def idioma(self, idioma):
-        self.__idioma = idioma
 
     @property
     def ja_cantada(self):
