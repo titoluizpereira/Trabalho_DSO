@@ -90,3 +90,6 @@ class Cliente:
     def verificar_posicao_na_fila(self, fila: Fila_Karaoke):
         if isinstance(fila, Fila_Karaoke):
             fila.ver_posicao(self)
+
+    def __str__(self):
+        return self.__nome

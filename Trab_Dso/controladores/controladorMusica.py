@@ -150,7 +150,7 @@ class ControladorMusica:
         codigo_escolhido = self.__tela.recebe_id_para_listar()
         musica = self.buscar_musica(codigo_escolhido)
         if isinstance(musica, Musica):
-            dados_musica = {}
+            dados_musica = self.__tela.pegar_dados_musica()
             opcoes_de_artista = self.__controlador_biblioteca.lista_de_artista()
             opcoes = self.__tela.escolher_ou_adicionar_artista(opcoes_de_artista)
             if opcoes.isdigit():

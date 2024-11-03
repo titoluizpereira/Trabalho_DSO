@@ -27,14 +27,27 @@ class Musica():
     @property
     def artista(self):
         return self.__artista
+    
+    @artista.setter
+    def artista(self, artista):
+        self.__artista = artista
 
     @property
     def genero(self):
         return self.__genero
+    
+        
+    @genero.setter
+    def genero(self, genero):
+        self.__genero = genero
 
     @property
     def idioma(self):
         return self.__idioma
+    
+    @idioma.setter
+    def idioma(self, idioma):
+        self.__idioma = idioma
 
     @property
     def ja_cantada(self):

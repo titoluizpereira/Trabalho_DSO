@@ -106,4 +106,4 @@ class BibliotecaDeMusicas:
     def buscar_musica_por_codigo(self,codigo):
         for musica in self.__musicas:
             if musica.codigo == codigo:
-                return codigo
+                return musica
