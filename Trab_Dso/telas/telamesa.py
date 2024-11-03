@@ -24,7 +24,7 @@ class TelaMesa():
          print(f"---Mesa {numero} excluida")
          
     def mostrar_mesa(self,dados_mesa):
-         print(f"Mesa Numero {dados_mesa['numero']}, Clientes na Mesa: {dados_mesa["clientes"]}")
+         print(f"Mesa Numero {dados_mesa['numero']}, Clientes na Mesa: {dados_mesa['clientes']}")
 
     def seleciona_mesa(self):
         numero = input("Numero da mesa que deseja selecionar: ")
