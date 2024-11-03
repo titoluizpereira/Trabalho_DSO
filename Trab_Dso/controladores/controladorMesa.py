@@ -29,10 +29,10 @@ class ControladorMesa():
 
     def buscar_mesa_por_numero(self, numero):
         for mesa in self.__mesas:
-            if int(mesa.numero) == int(numero): 
+            if int(mesa.numero) == int(numero):
                 return mesa
-            else:
-                print(f"mesa de nuero {mesa.numero} não corresponde ao valor passado {numero}")
+        print(f"Não existe uma mesa com o número {numero}")
+        return None
     
     def lista_mesa(self):
         for mesa in self.__mesas:
