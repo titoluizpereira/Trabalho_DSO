@@ -46,7 +46,7 @@ class TelaMusica:
         cont = 0
         print("Lista de Artistas:")
         for categoria in lista:
-            print(f"{categoria.nome_artista} - Id: {cont}")
+            print(f"{categoria.nome} - Id: {cont}")
             cont+=1
         escolha = input("Escolha o id de um artista, caso queira adicionar novo digite o novo nome do artista: ")
         return escolha
@@ -54,7 +54,7 @@ class TelaMusica:
         cont=0
         print("Lista de Generos")
         for categoria in lista:
-            print(f"{categoria.nome_genero} - Id: {cont}")
+            print(f"{categoria.nome} - Id: {cont}")
             cont+=1
         escolha = input("Escolha o id de um genero, caso queira adicionar novo digite o novo nome do genero: ")
         return escolha
@@ -63,39 +63,26 @@ class TelaMusica:
         cont=0
         print("Lista de idiomas")
         for categoria in lista:
-            print(f"{categoria.nome_idioma} - Id: {cont}")
+            print(f"{categoria.nome} - Id: {cont}")
             cont+=1
         escolha = input("Escolha o id de um idioma, caso queira adicionar novo digite o novo nome do idioma: ")
         return escolha
 
     def recebe_id_para_listar(self):
-        id = int(input("Digite o id ou código desejado: "))
+        id = int(input("Digite o id desejado: "))
         return(id)
 
     def mostrar_musica(self, musica):
         print(f"{musica.titulo} - {musica.genero} - {musica.artista} - {musica.idioma}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     def mostrar_musica(self, musica):
         print("\n=== Detalhes da Música ===")
         print(f"Título: {musica.titulo}")
         print(f"Código: {musica.codigo}")
-        print(f"Artista: {musica.artista.nome_artista}")
-        print(f"Gênero: {musica.genero.nome_genero}")
-        print(f"Idioma: {musica.idioma.nome_idioma}")
+        print(f"Artista: {musica.artista.nome}")
+        print(f"Gênero: {musica.genero.nome}")
+        print(f"Idioma: {musica.idioma.nome}")
         print(f"Vezes tocadas: {musica.contador}")
 
     def mostrar_mensagem(self, mensagem: str):

@@ -106,6 +106,4 @@ class ControladorCliente():
         if not telefone.isdigit() or len(telefone) < 10:
             raise ValueError("Telefone inválido. O telefone deve conter apenas números e ter pelo menos 10 dígitos (ex.: 4899991234).")
 
-        self.__controlador_sistema.abrir_tela()
-        
 
