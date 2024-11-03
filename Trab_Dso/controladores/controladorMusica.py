@@ -113,8 +113,9 @@ class ControladorMusica:
 
     def listar_artistas(self):
         resultados = self.__controlador_biblioteca.lista_de_artista()
+        cont = 0
         for resultado in resultados:
-            cont = 0
+            cont +=1
             self.__tela.mostrar_mensagem(f"{cont} - {resultado}")
         id_escolhido = self.__tela.recebe_id_para_listar()
         lista_musicas = self.__controlador_biblioteca.lista_musica()
@@ -125,8 +126,9 @@ class ControladorMusica:
 
     def listar_generos(self):
         resultados = self.__controlador_biblioteca.lista_de_genero()
+        cont = 0
         for resultado in resultados:
-            cont = 0
+            cont += 1
             self.__tela.mostrar_mensagem(f"{cont} - {resultado}")
         id_escolhido = self.__tela.recebe_id_para_listar()
         lista_musicas = self.__controlador_biblioteca.lista_musica()
@@ -136,8 +138,9 @@ class ControladorMusica:
 
     def listar_idiomas(self):
         resultados = self.__controlador_biblioteca.lista_de_idioma()
+        cont=0
         for resultado in resultados:
-            cont = 0
+            cont += 1
             self.__tela.mostrar_mensagem(f"{cont} - {resultado}")
         id_escolhido = self.__tela.recebe_id_para_listar()
         lista_musicas = self.__controlador_biblioteca.lista_musica()

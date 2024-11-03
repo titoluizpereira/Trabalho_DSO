@@ -70,18 +70,24 @@ class ControladorFila:
 
     def remover_pedido(self):
         try:
-            dados_cliente = self.__tela.get_client_data()
-            cliente = self.__controlador_sistema._SystemController__client_controller.buscar_cliente_cpf(dados_cliente["cpf"])
+            self.listar_clientes_na_fila()
+            cliente = self.__tela.receber_cpf_cliente()
             
-            if cliente:
-                if self.__fila.remover_fila(cliente):
+            if self.__controlador_sistema.cliente_controlador.buscar_cliente_cpf(cliente) is not None:
+                    cliente = self.__controlador_sistema.cliente_controlador.buscar_cliente_cpf(cliente)
+                    self.__fila.remover_fila(cliente)
                     self.__tela.mostra_menssagem("Pedido removido")
-                else:
-                    self.__tela.mostra_menssagem("Cliente não está na fila")
             else:
-                self.__tela.mostra_menssagem("Cliente não encontrado")
+                    self.__tela.mostra_menssagem("Cliente não está na fila")
+
         except Exception as e:
             self.__tela.mostra_menssagem(f"Error removing request: {str(e)}")
 
     def sair(self):
         self.__controlador_sistema.abrir_tela()
+
+    def listar_clientes_na_fila(self):
+        for cliente in self.__fila.fila_karaoke:
+            cliente = cliente[0]
+            dados_cliente = {"nome": cliente.nome, "telefone": cliente.telefone, "cpf": cliente.cpf, "email": cliente.email}
+            self.__controlador_sistema.cliente_controlador.tela.mostrar_cliente(dados_cliente)
