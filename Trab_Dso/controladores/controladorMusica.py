@@ -91,7 +91,7 @@ class ControladorMusica:
             self.__tela.mostrar_mensagem(f"Erro registrando música: {str(e)}")
 
     def buscar_musica(self, codigo: str) -> Musica:
-        return self.__controlador_biblioteca.achar_musica_por_codigo(codigo)
+        return self.__controlador_biblioteca.buscar_musica(codigo)
 
     def listar_musica(self):
         lista_musica = self.__controlador_biblioteca.lista_musica()
@@ -147,7 +147,49 @@ class ControladorMusica:
 
     def atualizar_musica(self):
         self.listar_musica()
-        id_escolhido = self.__tela.recebe_id_para_listar()
+        codigo_escolhido = self.__tela.recebe_id_para_listar()
+        musica = self.buscar_musica(codigo_escolhido)
+        if isinstance(musica, Musica):
+            dados_musica = {}
+            opcoes_de_artista = self.__controlador_biblioteca.lista_de_artista()
+            opcoes = self.__tela.escolher_ou_adicionar_artista(opcoes_de_artista)
+            if opcoes.isdigit():
+                artista = self.__controlador_biblioteca.retornar_artista_por_id(int(opcoes))
+                dados_musica["artista"] = artista
+            else:
+                novo_artista = Artista(opcoes)
+                dados_musica["artista"] = novo_artista
+            
+            opcoes_genero = self.__controlador_biblioteca.lista_de_genero()
+            opcoes = self.__tela.escolher_ou_adicionar_genero(opcoes_genero)
+            if opcoes.isdigit():
+                genero = self.__controlador_biblioteca.retornar_genero_por_id(int(opcoes))
+                dados_musica["genero"] = genero
+            else:
+                novo_genero = Genero(opcoes)
+                dados_musica["genero"] = novo_genero
+
+            opcoes_idioma = self.__controlador_biblioteca.lista_de_idioma()
+            opcoes = self.__tela.escolher_ou_adicionar_idioma(opcoes_idioma)
+            if opcoes.isdigit():
+                idioma = self.__controlador_biblioteca.retornar_idioma_por_id(int(opcoes))
+                dados_musica["idioma"] = idioma
+            else:
+                novo_idioma = Idioma(opcoes)
+                dados_musica["idioma"] = novo_idioma
+
+
+            musica.titulo = dados_musica["titulo"]
+            musica.artista = dados_musica["artista"]
+            musica.genero = dados_musica["genero"]
+            musica.idioma = dados_musica["idioma"]
+
+            self.__tela.mostrar_mensagem("Tudo certo, música atualziada!")
+        else:
+            self.__tela.mostrar_mensagem("Nenhuma musica possui esse id")
+
+
+
 
     def sair(self):
         self.__controlador_sistema.abrir_tela()

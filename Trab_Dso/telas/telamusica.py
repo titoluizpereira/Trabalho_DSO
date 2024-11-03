@@ -69,7 +69,7 @@ class TelaMusica:
         return escolha
 
     def recebe_id_para_listar(self):
-        id = int(input("Digite o id desejado: "))
+        id = int(input("Digite o id ou código desejado: "))
         return(id)
 
     def mostrar_musica(self, musica):
