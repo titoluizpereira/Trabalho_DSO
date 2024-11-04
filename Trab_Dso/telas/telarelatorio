@@ -1,0 +1,15 @@
+class TelaRelatorio():
+  # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
+  def tela_opcoes(self):
+    print("-------- CLIENTES ----------")
+    print("Escolha a opcao")
+    print("1 - Artistas mais cantados")
+    print("2 - Gêneros mais cantados")
+    print("3 - Idiomas mais cantados")
+    print("0 - Retornar")
+
+    opcao = int(input("Escolha a opcao: "))
+    while opcao > 3 or opcao < 0:
+          opcao = int(input("Escolha errada, selecione um valor válido: "))
+      
+    return opcao
